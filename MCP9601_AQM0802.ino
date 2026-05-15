@@ -199,7 +199,7 @@ void InterruptGPIO2(){
 // core 0
 void setup() {
   Serial.begin(115200);
-  delay(500);
+  delay(2000);
   Serial.println("core0:start....");
 
   //pinMode(SW_GPIO2, INPUT);
@@ -270,7 +270,8 @@ void setup() {
   }
 
   // SD
-  sd_ok = SD.begin(PIN_SD_CS);
+  //sd_ok = SD.begin(PIN_SD_CS);
+  sd_ok = SD.begin(PIN_SD_CS,1000000,SPI);
 
   if (sd_ok && bme_ok && mcp_ok) {
     lcd.clear(); lcd.setCursor(0,0); lcd.print("Dev OK");
